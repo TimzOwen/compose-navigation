@@ -1,0 +1,62 @@
+package com.timzowen.navigationcourse.ui.typesafe
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+
+@Composable
+fun HomeScreen(onNavigate: (name: String, score: String) -> Unit) {
+
+    var name by remember { mutableStateOf("") }
+    var score by remember { mutableStateOf("") }
+
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Home Screen",
+            fontSize = 40.sp
+        )
+
+        Spacer(modifier = Modifier.height(40.dp))
+
+        TextField(
+            value = name,
+            onValueChange = { name = it },
+            label = { Text("Name...") }
+        )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        TextField(
+            value = score,
+            onValueChange = { score = it },
+            label = { Text("Score...") }
+        )
+
+        Spacer(modifier = Modifier.height(40.dp))
+
+        Button(
+            onClick = { onNavigate(name, score) }
+        ) {
+            Text("Profile")
+        }
+    }
+}
+

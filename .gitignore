@@ -11,6 +11,7 @@
 .kotlin/errors
 /build
 /captures
+.idea
 .externalNativeBuild
 .cxx
 local.properties
